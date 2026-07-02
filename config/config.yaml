@@ -1,0 +1,41 @@
+app:
+  name: "ClinIQ"
+  subtitle: "Agentic Clinical Pattern Recognition and Decision Support Platform"
+  version: "1.1"
+  schema_version: "1.0"
+
+llm:
+  provider: groq
+  model: groq/llama-3.3-70b-versatile
+  temperature: 0.2
+  max_tokens: 4096
+  timeout: 120
+
+web_retrieval:
+  enabled: true
+  cache_directory: online_knowledge
+  max_search_results_per_query: 5
+  max_documents_per_category: 3
+  request_timeout_seconds: 12
+  min_text_characters: 350
+  user_agent: "ClinIQ academic claim-review evidence bot/1.1"
+  # Search is intentionally live. No predefined local knowledge files are required.
+  # The app writes fetched pages/snippets into online_knowledge/ as the claim-specific knowledge base.
+
+retrieval:
+  top_k_final: 3
+
+report:
+  output_directory: "reports"
+  title: "ClinIQ: Agentic Clinical Pattern Recognition and Decision Support Platform"
+  author: "ClinIQ Evidence Analysis Engine"
+
+workflow:
+  enable_pattern_agent: true
+  enable_online_rag: true
+  enable_decision_agent: true
+  enable_report_agent: true
+
+logging:
+  level: INFO
+  file: logs/cliniq.log

@@ -1,0 +1,101 @@
+{
+  "case_information": {
+    "case_id": "CASE-PNA-003",
+    "schema_version": "1.0",
+    "created_at": "2026-06-01",
+    "case_type": "claim_review"
+  },
+  "patient": {
+    "patient_id": "PAT-CASE-PNA-003",
+    "first_name": "Alex",
+    "last_name": "Rivera",
+    "date_of_birth": "1978-04-12",
+    "gender": "F",
+    "member_id": "MBR-CASE-PNA-003"
+  },
+  "provider": {
+    "provider_id": "PRV-1001",
+    "name": "Metro General Hospital",
+    "npi": "1234567890",
+    "specialty": "Internal Medicine"
+  },
+  "payer": {
+    "payer_id": "PAY-001",
+    "name": "National Health Plan",
+    "plan_type": "PPO",
+    "policy_id": "POL-STANDARD-2026"
+  },
+  "encounter": {
+    "encounter_id": "ENC-CASE-PNA-003",
+    "encounter_type": "inpatient",
+    "admission_date": "2026-05-15",
+    "discharge_date": "2026-05-18",
+    "place_of_service": "21"
+  },
+  "diagnoses": [
+    {
+      "code": "J18.9",
+      "system": "ICD-10-CM",
+      "description": "Pneumonia, unspecified organism",
+      "rank": 1,
+      "is_primary": true
+    }
+  ],
+  "procedures": [
+    {
+      "code": "71046",
+      "system": "CPT",
+      "description": "Chest X-ray",
+      "charge_amount": 650.0
+    },
+    {
+      "code": "99223",
+      "system": "CPT",
+      "description": "Initial hospital care",
+      "charge_amount": 5100.0
+    }
+  ],
+  "medications": [],
+  "labs": [],
+  "claim": {
+    "claim_id": "CLM-CASE-PNA-003",
+    "claim_type": "837I",
+    "total_billed": 5750.0,
+    "service_from": "2026-05-15",
+    "service_to": "2026-05-18",
+    "lines": [
+      {
+        "line_number": 1,
+        "procedure_code": "71046",
+        "diagnosis_pointers": [
+          1
+        ],
+        "billed_amount": 650.0
+      },
+      {
+        "line_number": 2,
+        "procedure_code": "99223",
+        "diagnosis_pointers": [
+          1
+        ],
+        "billed_amount": 5100.0
+      }
+    ]
+  },
+  "supporting_documents": [
+    {
+      "document_id": "DOC-CASE-PNA-003-1",
+      "document_type": "clinical_note",
+      "title": "Chest imaging report",
+      "summary": "Clinical documentation supporting Pneumonia management.",
+      "date": "2026-05-16"
+    },
+    {
+      "document_id": "DOC-CASE-PNA-003-2",
+      "document_type": "clinical_note",
+      "title": "Admission H&P",
+      "summary": "Clinical documentation supporting Pneumonia management.",
+      "date": "2026-05-16"
+    }
+  ]
+}

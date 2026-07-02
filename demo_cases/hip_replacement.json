@@ -1,0 +1,87 @@
+{
+  "case_information": {
+    "case_id": "CASE-HIP-006",
+    "schema_version": "1.0",
+    "created_at": "2026-06-01",
+    "case_type": "claim_review"
+  },
+  "patient": {
+    "patient_id": "PAT-CASE-HIP-006",
+    "first_name": "Alex",
+    "last_name": "Rivera",
+    "date_of_birth": "1978-04-12",
+    "gender": "F",
+    "member_id": "MBR-CASE-HIP-006"
+  },
+  "provider": {
+    "provider_id": "PRV-1001",
+    "name": "Metro General Hospital",
+    "npi": "1234567890",
+    "specialty": "Internal Medicine"
+  },
+  "payer": {
+    "payer_id": "PAY-001",
+    "name": "National Health Plan",
+    "plan_type": "PPO",
+    "policy_id": "POL-STANDARD-2026"
+  },
+  "encounter": {
+    "encounter_id": "ENC-CASE-HIP-006",
+    "encounter_type": "inpatient",
+    "admission_date": "2026-05-15",
+    "discharge_date": "2026-05-18",
+    "place_of_service": "21"
+  },
+  "diagnoses": [
+    {
+      "code": "M16.11",
+      "system": "ICD-10-CM",
+      "description": "Primary osteoarthritis, right hip",
+      "rank": 1,
+      "is_primary": true
+    }
+  ],
+  "procedures": [
+    {
+      "code": "27130",
+      "system": "CPT",
+      "description": "Total hip arthroplasty",
+      "charge_amount": 28500.0
+    }
+  ],
+  "medications": [],
+  "labs": [],
+  "claim": {
+    "claim_id": "CLM-CASE-HIP-006",
+    "claim_type": "837I",
+    "total_billed": 28500.0,
+    "service_from": "2026-05-15",
+    "service_to": "2026-05-18",
+    "lines": [
+      {
+        "line_number": 1,
+        "procedure_code": "27130",
+        "diagnosis_pointers": [
+          1
+        ],
+        "billed_amount": 28500.0
+      }
+    ]
+  },
+  "supporting_documents": [
+    {
+      "document_id": "DOC-CASE-HIP-006-1",
+      "document_type": "clinical_note",
+      "title": "Orthopedic operative report",
+      "summary": "Clinical documentation supporting Hip Replacement management.",
+      "date": "2026-05-16"
+    },
+    {
+      "document_id": "DOC-CASE-HIP-006-2",
+      "document_type": "clinical_note",
+      "title": "PT evaluation",
+      "summary": "Clinical documentation supporting Hip Replacement management.",
+      "date": "2026-05-16"
+    }
+  ]
+}

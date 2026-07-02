@@ -1,0 +1,87 @@
+{
+  "case_information": {
+    "case_id": "CASE-KNEE-010",
+    "schema_version": "1.0",
+    "created_at": "2026-06-01",
+    "case_type": "claim_review"
+  },
+  "patient": {
+    "patient_id": "PAT-CASE-KNEE-010",
+    "first_name": "Alex",
+    "last_name": "Rivera",
+    "date_of_birth": "1978-04-12",
+    "gender": "F",
+    "member_id": "MBR-CASE-KNEE-010"
+  },
+  "provider": {
+    "provider_id": "PRV-1001",
+    "name": "Metro General Hospital",
+    "npi": "1234567890",
+    "specialty": "Internal Medicine"
+  },
+  "payer": {
+    "payer_id": "PAY-001",
+    "name": "National Health Plan",
+    "plan_type": "PPO",
+    "policy_id": "POL-STANDARD-2026"
+  },
+  "encounter": {
+    "encounter_id": "ENC-CASE-KNEE-010",
+    "encounter_type": "inpatient",
+    "admission_date": "2026-05-15",
+    "discharge_date": "2026-05-18",
+    "place_of_service": "21"
+  },
+  "diagnoses": [
+    {
+      "code": "M23.211",
+      "system": "ICD-10-CM",
+      "description": "Derangement of posterior horn of medial meniscus, right knee",
+      "rank": 1,
+      "is_primary": true
+    }
+  ],
+  "procedures": [
+    {
+      "code": "29881",
+      "system": "CPT",
+      "description": "Knee arthroscopy with meniscectomy",
+      "charge_amount": 11200.0
+    }
+  ],
+  "medications": [],
+  "labs": [],
+  "claim": {
+    "claim_id": "CLM-CASE-KNEE-010",
+    "claim_type": "837I",
+    "total_billed": 11200.0,
+    "service_from": "2026-05-15",
+    "service_to": "2026-05-18",
+    "lines": [
+      {
+        "line_number": 1,
+        "procedure_code": "29881",
+        "diagnosis_pointers": [
+          1
+        ],
+        "billed_amount": 11200.0
+      }
+    ]
+  },
+  "supporting_documents": [
+    {
+      "document_id": "DOC-CASE-KNEE-010-1",
+      "document_type": "clinical_note",
+      "title": "MRI knee report",
+      "summary": "Clinical documentation supporting Knee Arthroscopy management.",
+      "date": "2026-05-16"
+    },
+    {
+      "document_id": "DOC-CASE-KNEE-010-2",
+      "document_type": "clinical_note",
+      "title": "Operative note",
+      "summary": "Clinical documentation supporting Knee Arthroscopy management.",
+      "date": "2026-05-16"
+    }
+  ]
+}
