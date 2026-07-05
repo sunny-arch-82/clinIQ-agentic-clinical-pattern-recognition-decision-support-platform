@@ -1,71 +1,96 @@
 # ClinIQ
 
-**Agentic Clinical Pattern Recognition and Decision Support Platform**
+## Agentic Clinical Pattern Recognition and Decision Support Platform
 
-Version 1.1 redesign: **live online RAG** + concise reviewer report.
+ClinIQ is a hackathon proof-of-concept project built for the Cotiviti internship assessment under the topic:
 
-## What changed
+**Clinical Decision Making and Pattern Recognition in Healthcare**
 
-- The app no longer depends on predefined local `knowledge/*.txt` files.
-- When a claim is submitted, the RAG layer searches the web, fetches online pages/snippets, and stores the fetched evidence under `online_knowledge/`.
-- The report is concise and includes only:
-  - Claim snapshot
-  - Patterns recognized
-  - Online data retrieved: collection, source, retrieved-for
-  - Decision-making summary
-  - Evidence support
-  - Recommendation
-  - Reviewer actions
-- No retrieval scores are shown.
-- No confidence levels are shown.
-- The system never approves or denies claims.
+The project demonstrates how an agentic AI workflow can support healthcare claim review by combining structured claim analysis, clinical pattern recognition, online evidence retrieval, verification-aware reasoning, and reviewer-facing PDF reporting.
 
-## Setup
+ClinIQ is designed as a **decision-support intelligence platform**, not an automated claim approval or denial system.
 
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
-```
+---
 
-Python 3.12 is recommended for the AI ecosystem. Python 3.13 may work but can produce more package warnings.
+## Project Goal
 
-## Run
+Healthcare claim review often requires comparing diagnoses, procedures, documentation, coding references, payer policy, provider information, authorization status, and medical necessity evidence.
 
-```bash
-streamlit run app/streamlit_app.py
-```
+The goal of ClinIQ is to show how AI can help reviewers:
 
-## Online RAG behavior
+- Recognize clinical and coding patterns in structured claim data
+- Retrieve public evidence using an online RAG pipeline
+- Check evidence quality before reasoning
+- Separate public evidence from internal verification requirements
+- Generate transparent reviewer-oriented recommendations
+- Produce a PDF Decision Intelligence Report
 
-The live RAG layer is in:
+The system intentionally avoids final approve or deny language because real claim action often requires secure internal payer/provider data that is not publicly available.
+
+---
+
+## Important Disclaimer
+
+ClinIQ is a proof of concept for decision-support only.
+
+It does **not** approve, deny, adjudicate, or pay claims.
+
+Public online evidence can support clinical, coding, policy, and medical necessity reasoning, but it cannot reliably verify:
+
+- Payer-specific benefits
+- Member eligibility
+- Provider network status
+- Authorization records
+- Contract terms
+- Internal payer policy rules
+
+Because of this, ClinIQ explicitly reports **Internal Verification Required** when claim-specific verification cannot be completed using public information.
+
+The final decision always remains with a qualified human reviewer.
+
+---
+
+## What ClinIQ Demonstrates
+
+ClinIQ demonstrates the main concepts of the selected assessment topic:
+
+| Topic Area | How ClinIQ Demonstrates It |
+|---|---|
+| Clinical Decision Making | Supports reviewer decisions using structured evidence |
+| Pattern Recognition | Detects clinical, coding, documentation, and claim patterns |
+| Chain Reasoning | Uses a staged workflow instead of one direct LLM prompt |
+| Agentic Generative AI | Uses multiple specialized workflow agents |
+| Classification | Categorizes evidence into clinical, policy, coding, and medical necessity |
+| Inference | Identifies verification gaps and recommends next review action |
+| Treatment | Analyzes diagnosis, procedure, and supporting clinical information |
+| Payment | Supports payment integrity and claim review reasoning |
+| Operations | Produces reviewer actions for payer, provider, and authorization checks |
+
+Prediction, clustering, and time-series anomaly detection are treated as future extensions because they require historical longitudinal claim datasets.
+
+---
+
+## High-Level Workflow
 
 ```text
-rag/retriever.py
-```
-
-For each claim, it builds online search queries from:
-
-- Diagnosis codes and descriptions
-- Procedure codes and descriptions
-- Claim lines and diagnosis pointers
-- Payer, plan type, policy ID
-- Provider, NPI, specialty
-- Encounter type and place of service
-- Admission/discharge/service dates
-- Billed amount
-- Supporting document summaries
-- Pattern-agent findings
-
-Fetched evidence is cached here:
-
-```text
-online_knowledge/
-```
-
-This folder is generated at runtime and is ignored by Git.
-
-## Important limitation
-
-The app cannot retrieve an exact payer policy, provider network record, or authorization record unless it is publicly available online. If exact evidence is not found, the Decision Agent should list it as an evidence gap instead of inventing it.
+Structured Claim JSON
+        ↓
+Claim Validation
+        ↓
+Pattern Recognition Agent
+        ↓
+Query Planner Agent
+        ↓
+Online RAG Retriever
+        ↓
+Evidence Quality Agent
+        ↓
+Retry Retrieval Once If Evidence Is Weak
+        ↓
+Finalize Evidence Gaps
+        ↓
+Verification Agent
+        ↓
+Decision Intelligence Agent
+        ↓
+PDF Report Agent
