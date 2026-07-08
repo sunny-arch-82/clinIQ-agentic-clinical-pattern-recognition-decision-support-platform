@@ -31,7 +31,7 @@ The system intentionally avoids final approve or deny language because real clai
 
 ## Important Disclaimer
 
-ClinIQ is a proof of concept for decision support only.
+ClinIQ is a proof of concept for decision support.
 
 It does **not** approve, deny, adjudicate, or pay claims.
 
